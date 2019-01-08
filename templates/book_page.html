@@ -1,0 +1,43 @@
+{% extends 'layout_in.html' %}
+
+{% block title %}
+Books page
+{% endblock %}
+
+{% block section%}
+
+{% if not id %}
+  <p>Error 404. No book match!</p>
+{% else %}
+  <p>Id: {{id}}</p>
+  <p>Title: {{title}}</p>
+  <p>Author: {{author}}</p>
+  <p>Year: {{year}}</p>
+  <p>Isbn: {{isbn}}</p>
+  {% if greads_ratings_count %}
+    <p>Goodreads.com reviews count: {{greads_ratings_count}}</p>
+    <p>Goodreads.com average score: {{greads_ratings_avg}}</p>
+  {% endif %}
+
+  <p>------</p>
+  {% for review in reviews %}
+    <p>{{review[0]}} has reviewd this book:</p>
+    <p>{{review[1]}}</p>
+    <p>Rating: {{review[2]}}</p>
+    <p>------</p>
+  {% endfor %}
+
+  {% if reviewable %}
+    <form action='{{url_for('review_submit')}}' method='POST'>
+      <input type='hidden' name='book_id' value='{{id}}'>
+      <p>{{user_name}} add your's review if you wish:</p>
+      <textarea name="review" rows="4" cols="50"></textarea>
+      <p>Rating: {% for i in range(1,6) %}
+        <input type="radio" name="rating" value="{{i}}">{{i}}
+      {% endfor %}</p>
+      <button>Submit review</button>
+    </form>
+  {% endif %}
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    {% block title%}
+    {% endblock %}
+  </title>
+</head>
+<body>
+  <nav>
+    <a href="{{url_for('signup')}}">[Sign up]</a>
+    <a href="{{url_for('signin')}}">[Sign in]</a>
+    {% block nav%}
+    {% endblock %}
+  </nav>
+  {% block section%}
+  {% endblock %}
+</body>
+</html>

@@ -1,0 +1,6 @@
+{% extends 'layout_out.html' %}
+
+{% block nav %}
+  <a href="{{url_for('signout')}}">[Sign out {{user_name}}]</a>
+  <a href="{{url_for('book_search')}}">[Search books]</a>
+{% endblock %}

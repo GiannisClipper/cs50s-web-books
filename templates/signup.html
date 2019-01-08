@@ -1,0 +1,15 @@
+{% extends 'layout_out.html' %}
+
+{% block title %}
+Sign up
+{% endblock %}
+
+{% block section%}
+<form action='{{url_for('signup')}}' method='POST'>
+  <p>{{message}}</p>
+  <p>Username: <input type='text' name='name' value='{{name}}'></p>
+  <p>Password: <input type='password' name='password' value='{{password}}'></p>
+  <p>retype pw: <input type='password' name='retype' value='{{retype}}'></p>
+  <button>Submit</button>
+<form>
+{% endblock %}
